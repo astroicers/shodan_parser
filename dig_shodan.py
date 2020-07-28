@@ -111,18 +111,12 @@ class dig_shodan():
 
     def show_json(self):
         print json.dumps(self.json)
+    
+    def return_json(self):
+        return json.dumps(self.json)
 
     def del_json(self):
         self.json = {}
 
     def __del__(self):
         self.driver.close()
-
-if __name__ == "__main__":
-    dig = dig_shodan("./chromedriver")
-
-    for i in range(1,256):
-        dig.set_ip("8.8.8.%d"%i)
-        dig.crawl_web()
-        dig.show_json()
-        dig.del_json()
